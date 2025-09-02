@@ -24,7 +24,13 @@ return {
     close_on_exit = true, -- close the terminal window when the process exits
     clear_env = false, -- use only environmental variables from `env`, passed to jobstart()
     -- Change the default shell. Can be a string or a function returning a string
-    shell = 'zsh',
+    shell = function()
+      if vim.fn.executable 'zsh' == 1 then
+        return 'zsh'
+      else
+        return 'bash'
+      end
+    end,
     auto_scroll = true, -- automatically scroll to the bottom on terminal output
     -- This field is only relevant if direction is set to 'float'
     float_opts = {
