@@ -122,9 +122,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Exit insert mode easier
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exits insert mode' })
 
--- Keep cursor centered when navigating by half pages
+-- Keep cursor centered when navigating by half pages.
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move down by half a page and center the cursor' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move down by half a page and center the cursor' })
+
+-- Add the ability to paste over text without clobbering the paste register.
+vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
