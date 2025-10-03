@@ -80,6 +80,9 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Make all floating windows have a border.
+vim.o.winborder = 'rounded'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -809,14 +812,18 @@ require('lazy').setup({
     },
   },
   {
-    'navarasu/onedark.nvim',
-    priority = 1000, -- make sure to load this before all the other start plugins
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
     config = function()
-      require('onedark').setup {
-        style = 'warmer',
+      require('catppuccin').setup {
+        float = {
+          transparent = false,
+          solid = false,
+        },
+        auto_integrations = true,
       }
-      -- Enable theme
-      require('onedark').load()
+      vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
   -- Highlight todo, notes, etc in comments
